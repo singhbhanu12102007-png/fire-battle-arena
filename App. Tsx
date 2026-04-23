@@ -1,0 +1,26 @@
+├── App.tsx
+   ├── app.json
+   ├── lib/
+   │   ├── theme.ts
+   │   ├── mockData.ts
+   │   ├── authContext.tsx
+   │   └── utils.ts
+   ├── components/
+   │   ├── TournamentCard.tsx
+   │   ├── Button.tsx
+   │   ├── Input.tsx
+   │   └── Header.tsx
+   └── screens/
+       ├── LoginScreen.tsx
+       ├── SignupScreen.tsx
+       ├── OTPVerificationScreen.tsx
+       ├── HomeScreen.tsx
+       ├── TournamentListScreen.tsx
+       ├── TournamentDetailScreen.tsx
+       ├── WalletScreen.tsx
+       ├── ProfileScreen.tsx
+       ├── MyMatchesScreen.tsx
+       ├── NotificationsScreen.tsx
+       ├── ReferralScreen.tsx
+       ├── SupportScreen.tsx
+       └── AdminPanelScreen.tsx
