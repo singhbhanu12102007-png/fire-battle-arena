@@ -1,211 +1,92 @@
-import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TouchableOpacity, 
-  ScrollView,
-  StatusBar,
-} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useFonts } from 'expo-font';
-import Ionicons from '@expo/vector-icons/Ionicons';
-
-const Colors = {
-  bgPrimary: '#0A0E1A',
-  bgSecondary: '#141829',
-  bgCard: '#1A1F35',
-  neonCyan: '#00F0FF',
-  neonGreen: '#00FF88',
-  neonRed: '#FF3366',
-  neonOrange: '#FF6B00',
-  neonPurple: '#A855F7',
-  textPrimary: '#FFFFFF',
-  textSecondary: '#8B8FA3',
-  textMuted: '#5A5E73',
-  borderSubtle: 'rgba(255, 255, 255, 0.06)',
-  borderAccent: 'rgba(0, 240, 255, 0.3)',
-};
-
-const tournaments = [
-  { id: '1', title: 'Fire Battle Cup #127', mode: 'Squad', prize: 2500, fee: 50, players: '36/48', status: 'upcoming', map: 'Bermuda' },
-  { id: '2', title: 'Solo Showdown #89', mode: 'Solo', prize: 1500, fee: 30, players: '50/50', status: 'live', map: 'Kalahari' },
-  { id: '3', title: 'Daily Free Fire #45', mode: 'Squad', prize: 500, fee: 0, players: '28/48', status: 'upcoming', map: 'Purgatory' },
-  { id: '4', title: 'Premium Elite Cup #12', mode: 'Squad', prize: 10000, fee: 200, players: '42/48', status: 'upcoming', map: 'Bermuda' },
-  { id: '5', title: 'Duo Challenge #56', mode: 'Duo', prize: 1800, fee: 40, players: '34/50', status: 'upcoming', map: 'Alpine' },
-];
 
 export default function App() {
-  const [fontsLoaded] = useFonts({ ...Ionicons.font });
-  if (!fontsLoaded) return null;
-
-  const getStatusColor = (s: string) => s === 'live' ? Colors.neonRed : Colors.neonCyan;
-  const getStatusLabel = (s: string) => s === 'live' ? 'LIVE' : 'UPCOMING';
-
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={s.container}>
       <StatusBar style="light" />
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-        <View style={styles.topBar}>
-          <View style={styles.topBarLeft}>
-            <Text style={styles.topBarLogo}>🔥</Text>
-            <Text style={styles.topBarTitle}>Fire Battle Arena</Text>
+      <ScrollView contentContainerStyle={s.content}>
+        <Text style={s.emoji}>🔥</Text>
+        <Text style={s.title}>Fire Battle Arena</Text>
+        <Text style={s.subtitle}>Play. Compete. Win Real Money.</Text>
+        <View style={s.card}>
+          <Text style={s.cardTitle}>🎮 Fire Battle Cup #127</Text>
+          <Text style={s.cardInfo}>Squad • Bermuda • 36/48 Players</Text>
+          <View style={s.row}>
+            <View style={s.item}><Text style={s.itemLabel}>Prize</Text><Text style={s.green}>₹2,500</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Per Kill</Text><Text style={s.orange}>₹15</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Entry</Text><Text style={s.white}>₹50</Text></View>
           </View>
-          <TouchableOpacity style={styles.topBarIcon}>
-            <Ionicons name="notifications-outline" size={22} color={Colors.textPrimary} />
-          </TouchableOpacity>
+          <TouchableOpacity style={s.btn}><Text style={s.btnText}>JOIN NOW</Text></TouchableOpacity>
         </View>
-
-        <View style={styles.banner}>
-          <Text style={styles.bannerTitle}>Welcome back, Warrior 👋</Text>
-          <Text style={styles.bannerSub}>Ready to dominate the arena?</Text>
-          <View style={styles.statsRow}>
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>₹570</Text>
-              <Text style={styles.statLabel}>Wallet</Text>
-            </View>
-            <View style={styles.statDiv} />
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>12</Text>
-              <Text style={styles.statLabel}>Wins</Text>
-            </View>
-            <View style={styles.statDiv} />
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>34</Text>
-              <Text style={styles.statLabel}>Matches</Text>
-            </View></View>
+        <View style={s.card}>
+          <Text style={s.cardTitle}>🎯 Daily Free Fire #45</Text>
+          <Text style={s.cardInfo}>Squad • Purgatory • 28/48 Players</Text>
+          <View style={s.row}>
+            <View style={s.item}><Text style={s.itemLabel}>Prize</Text><Text style={s.green}>₹500</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Per Kill</Text><Text style={s.orange}>₹5</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Entry</Text><Text style={s.green}>FREE</Text></View>
+          </View>
+          <TouchableOpacity style={s.btnFree}><Text style={s.btnFreeText}>JOIN FREE</Text></TouchableOpacity>
         </View>
-
-        <View style={styles.liveBanner}>
-          <Ionicons name="radio" size={14} color={Colors.neonRed} />
-          <Text style={styles.liveText}>1 Match Live Now!</Text>
-          <TouchableOpacity><Text style={styles.liveAction}>Watch →</Text></TouchableOpacity>
+        <View style={s.card}>
+          <Text style={s.cardTitle}>👑 Premium Elite Cup #12</Text>
+          <Text style={s.cardInfo}>Squad • Bermuda • 42/48 Players</Text>
+          <View style={s.row}>
+            <View style={s.item}><Text style={s.itemLabel}>Prize</Text><Text style={s.green}>₹10,000</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Per Kill</Text><Text style={s.orange}>₹40</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Entry</Text><Text style={s.white}>₹200</Text></View>
+          </View>
+          <TouchableOpacity style={s.btn}><Text style={s.btnText}>JOIN NOW</Text></TouchableOpacity>
         </View>
-
-        <View style={styles.quickActions}>
-          <TouchableOpacity style={styles.quickAction}>
-            <View style={[styles.quickIcon, { backgroundColor: 'rgba(0,255,136,0.15)' }]}>
-              <Ionicons name="gift-outline" size={20} color={Colors.neonGreen} />
-            </View>
-            <Text style={styles.quickText}>Free Entry</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.quickAction}>
-            <View style={[styles.quickIcon, { backgroundColor: 'rgba(0,240,255,0.15)' }]}>
-              <Ionicons name="wallet-outline" size={20} color={Colors.neonCyan} />
-            </View>
-            <Text style={styles.quickText}>Add Money</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.quickAction}>
-            <View style={[styles.quickIcon, { backgroundColor: 'rgba(168,85,247,0.15)' }]}>
-              <Ionicons name="people-outline" size={20} color={Colors.neonPurple} />
-            </View>
-            <Text style={styles.quickText}>Refer</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.quickAction}>
-            <View style={[styles.quickIcon, { backgroundColor: 'rgba(255,107,0,0.15)' }]}>
-              <Ionicons name="chatbubbles-outline" size={20} color={Colors.neonOrange} />
-            </View>
-            <Text style={styles.quickText}>Support</Text>
-          </TouchableOpacity>
+        <View style={s.card}>
+          <Text style={s.cardTitle}>⚔️ Solo Showdown #89</Text>
+          <Text style={s.liveRow}>🔴 LIVE • Kalahari • 50/50</Text>
+          <View style={s.row}>
+            <View style={s.item}><Text style={s.itemLabel}>Prize</Text><Text style={s.green}>₹1,500</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Per Kill</Text><Text style={s.orange}>₹10</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Entry</Text><Text style={s.white}>₹30</Text></View>
+          </View>
         </View>
-
-        <Text style={styles.sectionTitle}>🔥 Tournaments</Text>
-
-        {tournaments.map(t => (
-          <View key={t.id} style={styles.card}>
-            <View style={styles.cardHeader}>
-              <View style={styles.cardLeft}>
-                <Text style={styles.cardEmoji}>🎮</Text>
-                <View>
-                  <Text style={styles.cardTitle}>{t.title}</Text>
-                  <Text style={styles.cardMeta}>{t.mode} • {t.map}</Text>
-                </View>
-              </View>
-              <View style={[styles.statusBadge, { borderColor: getStatusColor(t.status) }]}>
-                <View style={[styles.statusDot, { backgroundColor: getStatusColor(t.status) }]} />
-                <Text style={[styles.statusText, { color: getStatusColor(t.status) }]}>{getStatusLabel(t.status)}</Text>
-              </View>
-            </View>
-            <View style={styles.prizeRow}>
-              <View style={styles.prizeItem}>
-                <Text style={styles.prizeLabel}>Prize Pool</Text>
-                <Text style={styles.prizeValue}>₹{t.prize.toLocaleString()}</Text>
-              </View>
-              <View style={styles.prizeDiv} />
-              <View style={styles.prizeItem}>
-                <Text style={styles.prizeLabel}>Per Kill</Text>
-                <Text style={styles.prizeValueKill}>₹{Math.floor(t.prize * 0.006)}</Text>
-              </View>
-              <View style={styles.prizeDiv} />
-              <View style={styles.prizeItem}>
-                <Text style={styles.prizeLabel}>Entry</Text>
-                <Text style={[styles.prizeValueFee, t.fee === 0 && styles.freeText]}>
-                  {t.fee === 0 ? 'FREE' : `₹${t.fee}`}
-                </Text>
-              </View>
-            </View>
-            <View style={styles.cardFooter}>
-              <Text style={styles.cardPlayers}>{t.players} Players</Text>
-              <TouchableOpacity style={styles.joinBtn}>
-                <Text style={styles.joinBtnText}>{t.fee === 0 ? 'JOIN FREE' : 'JOIN'}</Text>
-              </TouchableOpacity>
-            </View></View>
-        ))}
-
-        <View style={styles.notice}>
-          <Ionicons name="shield-checkmark" size={18} color={Colors.neonGreen} />
-          <Text style={styles.noticeText}>Fair Play Guaranteed. Anti-cheat system active.</Text>
+        <View style={s.card}>
+          <Text style={s.cardTitle}>🤝 Duo Challenge #56</Text>
+          <Text style={s.cardInfo}>Duo • Alpine • 34/50 Players</Text>
+          <View style={s.row}>
+            <View style={s.item}><Text style={s.itemLabel}>Prize</Text><Text style={s.green}>₹1,800</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Per Kill</Text><Text style={s.orange}>₹12</Text></View>
+            <View style={s.item}><Text style={s.itemLabel}>Entry</Text><Text style={s.white}>₹40</Text></View>
+          </View>
+          <TouchableOpacity style={s.btn}><Text style={s.btnText}>JOIN NOW</Text></TouchableOpacity>
+        </View>
+        <View style={s.notice}>
+          <Text style={s.noticeText}>🛡️ Fair Play Guaranteed. Anti-cheat system active.</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Colors.bgPrimary },
-  scrollContent: { paddingBottom: 32 },
-  topBar: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 12 },
-  topBarLeft: { flexDirection: 'row', alignItems: 'center' },
-  topBarLogo: { fontSize: 22, marginRight: 8 },
-  topBarTitle: { color: Colors.textPrimary, fontSize: 18, fontWeight: '800' },
-  topBarIcon: { padding: 4 },
-  banner: { marginHorizontal: 16, backgroundColor: Colors.bgCard, borderRadius: 16, borderWidth: 1, borderColor: Colors.borderAccent, padding: 20, marginBottom: 16 },
-  bannerTitle: { color: Colors.textPrimary, fontSize: 20, fontWeight: '800', marginBottom: 4 },
-  bannerSub: { color: Colors.neonCyan, fontSize: 14, marginBottom: 16 },
-  statsRow: { flexDirection: 'row', backgroundColor: Colors.bgPrimary, borderRadius: 10, padding: 12 },
-  statItem: { flex: 1, alignItems: 'center' },
-  statValue: { color: Colors.neonCyan, fontSize: 16, fontWeight: '700' },
-  statLabel: { color: Colors.textMuted, fontSize: 10, marginTop: 2 },
-  statDiv: { width: 1, backgroundColor: Colors.borderSubtle },
-  liveBanner: { flexDirection: 'row', alignItems: 'center', marginHorizontal: 16, backgroundColor: 'rgba(255,51,102,0.1)', borderWidth: 1, borderColor: 'rgba(255,51,102,0.3)', borderRadius: 10, paddingVertical: 12, paddingHorizontal: 16, marginBottom: 16, gap: 8 },
-  liveText: { flex: 1, color: Colors.textPrimary, fontSize: 14, fontWeight: '600' },
-  liveAction: { color: Colors.neonRed, fontSize: 14, fontWeight: '700' },
-  quickActions: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 16, marginBottom: 24 },
-  quickAction: { alignItems: 'center', gap: 4 },
-  quickIcon: { width: 48, height: 48, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
-  quickText: { color: Colors.textSecondary, fontSize: 10, fontWeight: '600' },
-  sectionTitle: { color: Colors.textPrimary, fontSize: 18, fontWeight: '700', paddingHorizontal: 16, marginBottom: 12 },
-  card: { backgroundColor: Colors.bgCard, borderRadius: 14, borderWidth: 1, borderColor: Colors.borderSubtle, padding: 16, marginHorizontal: 16, marginBottom: 12 },
-  cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 },
-  cardLeft: { flexDirection: 'row', flex: 1, marginRight: 8 },
-  cardEmoji: { fontSize: 24, marginRight: 12 },
-  cardTitle: { color: Colors.textPrimary, fontSize: 15, fontWeight: '700', marginBottom: 2 },
-  cardMeta: { color: Colors.textSecondary, fontSize: 12 },
-  statusBadge: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 6, borderWidth: 1, backgroundColor: 'rgba(0,0,0,0.3)' },
-  statusDot: { width: 5, height: 5, borderRadius: 2.5, marginRight: 4 },
-  statusText: { fontSize: 10, fontWeight: '700', letterSpacing: 0.5 },
-  prizeRow: { flexDirection: 'row', backgroundColor: Colors.bgPrimary, borderRadius: 10, padding: 12, marginBottom: 12 },
-  prizeItem: { flex: 1, alignItems: 'center' },
-  prizeLabel: { color: Colors.textMuted, fontSize: 10, marginBottom: 2 },
-  prizeValue: { color: Colors.neonGreen, fontSize: 14, fontWeight: '700' },
-  prizeValueKill: { color: Colors.neonOrange, fontSize: 14, fontWeight: '700' },
-  prizeValueFee: { color: Colors.textPrimary, fontSize: 14, fontWeight: '700' },
-  freeText: { color: Colors.neonGreen },
-  prizeDiv: { width: 1, backgroundColor: Colors.borderSubtle },
-  cardFooter: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  cardPlayers: { color: Colors.textSecondary, fontSize: 12 },
-  joinBtn: { backgroundColor: Colors.neonCyan, paddingHorizontal: 16, paddingVertical: 6, borderRadius: 8 },
-  joinBtnText: { color: Colors.bgPrimary, fontSize: 12, fontWeight: '700' },
-  notice: { flexDirection: 'row', alignItems: 'center', marginHorizontal: 16, backgroundColor: 'rgba(0,255,136,0.08)', borderWidth: 1, borderColor: 'rgba(0,255,136,0.2)', borderRadius: 10, padding: 12, gap: 8 },
-  noticeText: { flex: 1, color: Colors.textSecondary, fontSize: 12, lineHeight: 18 },
+const s = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#0A0E1A' },
+  content: { padding: 20, paddingBottom: 40 },
+  emoji: { fontSize: 60, textAlign: 'center', marginTop: 20 },
+  title: { color: '#FFF', fontSize: 28, fontWeight: '800', textAlign: 'center', marginTop: 8 },
+  subtitle: { color: '#00F0FF', fontSize: 14, textAlign: 'center', marginTop: 4, marginBottom: 24 },
+  card: { backgroundColor: '#1A1F35', borderRadius: 14, borderWidth: 1, borderColor: 'rgba(0,240,255,0.2)', padding: 16, marginBottom: 12 },
+  cardTitle: { color: '#FFF', fontSize: 16, fontWeight: '700', marginBottom: 4 },
+  cardInfo: { color: '#8B8FA3', fontSize: 12, marginBottom: 12 },
+  liveRow: { color: '#FF3366', fontSize: 12, fontWeight: '700', marginBottom: 12 },
+  row: { flexDirection: 'row', backgroundColor: '#0A0E1A', borderRadius: 10, padding: 12, marginBottom: 12 },
+  item: { flex: 1, alignItems: 'center' },
+  itemLabel: { color: '#5A5E73', fontSize: 10, marginBottom: 2 },
+  green: { color: '#00FF88', fontSize: 14, fontWeight: '700' },
+  orange: { color: '#FF6B00', fontSize: 14, fontWeight: '700' },
+  white: { color: '#FFF', fontSize: 14, fontWeight: '700' },
+  btn: { backgroundColor: '#00F0FF', borderRadius: 10, paddingVertical: 10, alignItems: 'center' },
+  btnText: { color: '#0A0E1A', fontSize: 14, fontWeight: '700' },
+  btnFree: { backgroundColor: 'rgba(0,255,136,0.2)', borderWidth: 1, borderColor: '#00FF88', borderRadius: 10, paddingVertical: 10, alignItems: 'center' },
+  btnFreeText: { color: '#00FF88', fontSize: 14, fontWeight: '700' },
+  notice: { backgroundColor: 'rgba(0,255,136,0.08)', borderWidth: 1, borderColor: 'rgba(0,255,136,0.2)', borderRadius: 10, padding: 12, marginTop: 8 },
+  noticeText: { color: '#8B8FA3', fontSize: 12, textAlign: 'center' },
 });
