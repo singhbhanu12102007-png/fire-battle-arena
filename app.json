@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Fire Battle Arena",
+    "slug": "fire-battle-arena",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0A0E1A"
+    },
+    "android": {
+      "package": "com.firebattlearena.app"
+    },
+    "ios": {
+      "bundleIdentifier": "com.firebattlearena.app"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "998038a9-0f0e-47b4-b062-0b74aa48213b"
+      }
+    }
+  }
+}
